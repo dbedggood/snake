@@ -1,6 +1,6 @@
 extends Line2D
 
-const MAX_POINT_DISTANCE = 50
+const MAX_POINT_DISTANCE = 30
 
 @onready var head = $"../Head"
 
