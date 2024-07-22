@@ -1,8 +1,10 @@
 extends Line2D
 
-const MAX_POINT_DISTANCE = 30
+signal body_grown
 
 @onready var head = $"../Head"
+
+const MAX_POINT_DISTANCE = 30
 
 
 func _process(delta):
@@ -30,6 +32,7 @@ func _input(event):
 		var snake_tail_direction = (snake_tail_tip - snake_tail_base).normalized()
 
 		add_point(get_point_position(last_point_index) + snake_tail_direction * MAX_POINT_DISTANCE)
+		body_grown.emit()
 
 	if event.is_action_pressed("shrink_snake"):
 		if point_count > 3:
