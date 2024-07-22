@@ -1,0 +1,45 @@
+[gd_scene load_steps=6 format=3 uid="uid://c0qatomkpyf4e"]
+
+[ext_resource type="Script" path="res://Head.gd" id="1_4r3ow"]
+[ext_resource type="Script" path="res://Tail.gd" id="2_k0c57"]
+[ext_resource type="Script" path="res://Body.gd" id="2_m2tg6"]
+
+[sub_resource type="Curve" id="Curve_xg11q"]
+_data = [Vector2(0, 0.4), 0.0, 0.0, 0, 0, Vector2(0.3, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.6), 0.0, 0.0, 0, 0]
+point_count = 3
+metadata/_snap_enabled = true
+
+[sub_resource type="Curve" id="Curve_d3lmw"]
+_data = [Vector2(0, 0.6), 0.0, 0.0, 0, 0, Vector2(1, 0.3), 0.0, 0.0, 0, 0]
+point_count = 2
+metadata/_snap_enabled = true
+
+[node name="Snake" type="Node2D"]
+metadata/_edit_group_ = true
+
+[node name="Head" type="Line2D" parent="."]
+points = PackedVector2Array(2.08165e-12, 2.08165e-12, 50, 2.08165e-12, 100, 2.08165e-12)
+width = 50.0
+width_curve = SubResource("Curve_xg11q")
+default_color = Color(0, 0.564706, 0, 1)
+joint_mode = 2
+begin_cap_mode = 2
+script = ExtResource("1_4r3ow")
+
+[node name="Body" type="Line2D" parent="."]
+points = PackedVector2Array(100, 2.08165e-12, 200, 2.08165e-12)
+width = 30.0
+default_color = Color(0, 0.6, 0, 1)
+joint_mode = 2
+begin_cap_mode = 2
+script = ExtResource("2_m2tg6")
+
+[node name="Tail" type="Line2D" parent="."]
+points = PackedVector2Array(200, 2.08165e-12, 300, 2.08165e-12)
+width = 50.0
+width_curve = SubResource("Curve_d3lmw")
+default_color = Color(0, 0.564706, 0, 1)
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
+script = ExtResource("2_k0c57")
