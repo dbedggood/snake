@@ -26,7 +26,12 @@ func _input(event):
 
 	if event.is_action_pressed("grow_snake"):
 		print("grow!")
-		add_point(get_point_position(last_point_index))
+		var snake_tail_tip = get_point_position(last_point_index)
+		var snake_tail_base = get_point_position(last_point_index - 1)
+		var snake_tail_direction = (snake_tail_tip - snake_tail_base).normalized()
+
+		add_point(get_point_position(last_point_index) + snake_tail_direction * MAX_POINT_DISTANCE)
+
 	if event.is_action_pressed("shrink_snake"):
 		if point_count > 3:
 			print("shrink!")
@@ -37,12 +42,11 @@ func _input(event):
 
 func _draw():
 	var snake_head_tip = get_point_position(0)
-
 	var snake_head_base = get_point_position(1)
-	var snake_head_direction = snake_head_tip - snake_head_base
+	var snake_head_direction = (snake_head_tip - snake_head_base).normalized()
 
 	#draw eyes
-	var left_eye_offset = snake_head_direction.orthogonal().normalized() * 20
+	var left_eye_offset = snake_head_direction.orthogonal() * 20
 	var right_eye_offset = left_eye_offset * -1
 	draw_circle(snake_head_tip + left_eye_offset, PUPILLARY_DISTANCE / 2, Color.BLACK)
 	draw_circle(snake_head_tip + right_eye_offset, PUPILLARY_DISTANCE / 2, Color.BLACK)
