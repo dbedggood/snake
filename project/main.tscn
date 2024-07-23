@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://bqpkkdeau0883"]
 
-[ext_resource type="PackedScene" uid="uid://c0qatomkpyf4e" path="res://src/snake/snake.tscn" id="1_boy64"]
+[ext_resource type="PackedScene" uid="uid://c0qatomkpyf4e" path="res://project/snake/snake.tscn" id="1_boy64"]
 
 [node name="Main" type="Node2D"]
 

@@ -1,8 +1,8 @@
 [gd_scene load_steps=6 format=3 uid="uid://c0qatomkpyf4e"]
 
-[ext_resource type="Script" path="res://src/snake/head.gd" id="1_f3ym2"]
-[ext_resource type="Script" path="res://src/snake/body.gd" id="2_m2tg6"]
-[ext_resource type="Script" path="res://src/snake/tail.gd" id="3_2tdkq"]
+[ext_resource type="Script" path="res://project/snake/head.gd" id="1_f3ym2"]
+[ext_resource type="Script" path="res://project/snake/body.gd" id="2_m2tg6"]
+[ext_resource type="Script" path="res://project/snake/tail.gd" id="3_2tdkq"]
 
 [sub_resource type="Curve" id="Curve_xg11q"]
 _data = [Vector2(0, 0.4), 0.0, 0.0, 0, 0, Vector2(0.3, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.6), 0.0, 0.0, 0, 0]
