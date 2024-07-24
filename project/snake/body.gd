@@ -2,22 +2,13 @@ extends Line2D
 
 signal body_grown
 
+@onready var snake = $".."
 @onready var head = $"../Head"
 
 
 func _process(delta):
-	var point_count = get_point_count()
-	set_point_position(0, head.get_point_position(2))
-
-	for point_index in range(1, point_count):
-		var previous_point_position = get_point_position(point_index - 1)
-		var current_point_position = get_point_position(point_index)
-		var previous_to_current_vector = current_point_position - previous_point_position
-		var constrained_new_position = (
-			previous_point_position
-			+ previous_to_current_vector.normalized() * Constants.MAX_POINT_DISTANCE
-		)
-		set_point_position(point_index, constrained_new_position)
+	set_point_position(0, head.get_point_position(Constants.HEAD_BASE_POINT_INDEX))
+	snake.set_constrained_nodes(self)
 
 
 func _input(event):

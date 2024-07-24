@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://c0qatomkpyf4e"]
+[gd_scene load_steps=7 format=3 uid="uid://c0qatomkpyf4e"]
 
 [ext_resource type="Script" path="res://project/snake/head.gd" id="1_f3ym2"]
+[ext_resource type="Script" path="res://project/snake/snake.gd" id="1_l3j4s"]
 [ext_resource type="Script" path="res://project/snake/body.gd" id="2_m2tg6"]
 [ext_resource type="Script" path="res://project/snake/tail.gd" id="3_2tdkq"]
 
@@ -15,6 +16,7 @@ point_count = 2
 metadata/_snap_enabled = true
 
 [node name="Snake" type="Node2D"]
+script = ExtResource("1_l3j4s")
 metadata/_edit_group_ = true
 
 [node name="Head" type="Line2D" parent="."]
