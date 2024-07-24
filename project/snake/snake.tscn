@@ -1,14 +1,18 @@
-[gd_scene load_steps=7 format=3 uid="uid://c0qatomkpyf4e"]
+[gd_scene load_steps=9 format=3 uid="uid://c0qatomkpyf4e"]
 
 [ext_resource type="Script" path="res://project/snake/head.gd" id="1_f3ym2"]
 [ext_resource type="Script" path="res://project/snake/snake.gd" id="1_l3j4s"]
 [ext_resource type="Script" path="res://project/snake/body.gd" id="2_m2tg6"]
 [ext_resource type="Script" path="res://project/snake/tail.gd" id="3_2tdkq"]
+[ext_resource type="Script" path="res://project/snake/head_area.gd" id="3_nu1ts"]
 
 [sub_resource type="Curve" id="Curve_xg11q"]
 _data = [Vector2(0, 0.4), 0.0, 0.0, 0, 0, Vector2(0.3, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.6), 0.0, 0.0, 0, 0]
 point_count = 3
 metadata/_snap_enabled = true
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_54wsa"]
+radius = 5.0
 
 [sub_resource type="Curve" id="Curve_d3lmw"]
 _data = [Vector2(0, 0.6), 0.0, 0.0, 0, 0, Vector2(1, 0.3), 0.0, 0.0, 0, 0]
@@ -27,6 +31,13 @@ default_color = Color(0, 0.6, 0, 1)
 joint_mode = 2
 begin_cap_mode = 2
 script = ExtResource("1_f3ym2")
+
+[node name="HeadArea" type="Area2D" parent="Head"]
+script = ExtResource("3_nu1ts")
+
+[node name="CollisionCircle" type="CollisionShape2D" parent="Head/HeadArea"]
+shape = SubResource("CircleShape2D_54wsa")
+debug_color = Color(0.687077, 0.0555679, 0.114304, 0.42)
 
 [node name="Body" type="Line2D" parent="."]
 points = PackedVector2Array(100, 2.08165e-12, 200, 2.08165e-12)
