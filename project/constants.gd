@@ -1,5 +1,7 @@
 extends Node
 
+const VIEWPORT_PADDING = 50
+
 const EYE_RADIUS = 6
 const PUPILLARY_DISTANCE = 15
 
