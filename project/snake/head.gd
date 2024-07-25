@@ -3,7 +3,7 @@ extends Line2D
 @onready var snake = $".."
 
 
-func _process(delta):
+func _process(_delta):
 	var head_tip_position = get_global_mouse_position()
 	set_point_position(Constants.HEAD_TIP_POINT_INDEX, head_tip_position)
 	snake.set_constrained_nodes(self)

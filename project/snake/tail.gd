@@ -3,7 +3,7 @@ extends Line2D
 @onready var body = $"../Body"
 
 
-func _process(delta):
+func _process(_delta):
 	var tail_base_position = body.get_point_position(body.get_point_count() - 1)
 	set_point_position(Constants.TAIL_BASE_POINT_INDEX, tail_base_position)
 

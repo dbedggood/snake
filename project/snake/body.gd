@@ -6,7 +6,7 @@ signal body_grown
 @onready var head = $"../Head"
 
 
-func _process(delta):
+func _process(_delta):
 	set_point_position(0, head.get_point_position(Constants.HEAD_BASE_POINT_INDEX))
 	snake.set_constrained_nodes(self)
 
