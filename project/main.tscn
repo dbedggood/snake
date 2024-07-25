@@ -5,19 +5,9 @@
 
 [node name="Main" type="Node2D"]
 
+[node name="Cherries" parent="." instance=ExtResource("2_40ltl")]
+position = Vector2(300, 200)
+
 [node name="Snake" parent="." instance=ExtResource("1_boy64")]
 
-[node name="Cherries" parent="." instance=ExtResource("2_40ltl")]
-position = Vector2(121, 293)
-
-[node name="Cherries2" parent="." instance=ExtResource("2_40ltl")]
-position = Vector2(917, 119)
-
-[node name="Cherries3" parent="." instance=ExtResource("2_40ltl")]
-position = Vector2(372, 479)
-
-[node name="Cherries4" parent="." instance=ExtResource("2_40ltl")]
-position = Vector2(802, 527)
-
-[node name="Cherries5" parent="." instance=ExtResource("2_40ltl")]
-position = Vector2(571, 274)
+[connection signal="eaten" from="Cherries" to="Snake" method="_on_cherries_eaten"]

@@ -56,4 +56,5 @@ script = ExtResource("3_nu1ts")
 [node name="CollisionCircle" type="CollisionShape2D" parent="Head/HeadArea"]
 shape = SubResource("CircleShape2D_54wsa")
 
-[connection signal="body_grown" from="Body" to="Tail" method="_on_body_body_grown"]
+[connection signal="ate_cherries" from="." to="Body" method="_on_snake_ate_cherries"]
+[connection signal="grown" from="Body" to="Tail" method="_on_body_grown"]

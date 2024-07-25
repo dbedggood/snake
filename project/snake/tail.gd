@@ -15,7 +15,7 @@ func _process(_delta):
 	set_point_position(Constants.TAIL_TIP_POINT_INDEX, constrained_new_position)
 
 
-func _on_body_body_grown():
+func _on_body_grown():
 	var tail_base_position = body.get_point_position(body.get_point_count() - 1)
 	var base_to_tip_vector = (
 		tail_base_position - body.get_point_position(body.get_point_count() - 2)
