@@ -6,6 +6,11 @@
 [ext_resource type="Script" path="res://project/snake/tail.gd" id="3_2tdkq"]
 [ext_resource type="Script" path="res://project/snake/head_area.gd" id="3_nu1ts"]
 
+[sub_resource type="Curve" id="Curve_d3lmw"]
+_data = [Vector2(0, 0.6), 0.0, 0.0, 0, 0, Vector2(1, 0.3), 0.0, 0.0, 0, 0]
+point_count = 2
+metadata/_snap_enabled = true
+
 [sub_resource type="Curve" id="Curve_xg11q"]
 _data = [Vector2(0, 0.4), 0.0, 0.0, 0, 0, Vector2(0.3, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.6), 0.0, 0.0, 0, 0]
 point_count = 3
@@ -14,14 +19,27 @@ metadata/_snap_enabled = true
 [sub_resource type="CircleShape2D" id="CircleShape2D_54wsa"]
 radius = 5.0
 
-[sub_resource type="Curve" id="Curve_d3lmw"]
-_data = [Vector2(0, 0.6), 0.0, 0.0, 0, 0, Vector2(1, 0.3), 0.0, 0.0, 0, 0]
-point_count = 2
-metadata/_snap_enabled = true
-
 [node name="Snake" type="Node2D"]
 script = ExtResource("1_l3j4s")
 metadata/_edit_group_ = true
+
+[node name="Tail" type="Line2D" parent="."]
+points = PackedVector2Array(210, 2.08165e-12, 240, 2.08165e-12)
+width = 50.0
+width_curve = SubResource("Curve_d3lmw")
+default_color = Color(0, 0.6, 0, 1)
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
+script = ExtResource("3_2tdkq")
+
+[node name="Body" type="Line2D" parent="."]
+points = PackedVector2Array(60, 2.08165e-12, 90, 2.08165e-12, 120, 2.08165e-12, 150, 2.08165e-12, 180, 2.08165e-12, 210, 2.08165e-12)
+width = 30.0
+default_color = Color(0, 0.6, 0, 1)
+joint_mode = 2
+begin_cap_mode = 2
+script = ExtResource("2_m2tg6")
 
 [node name="Head" type="Line2D" parent="."]
 points = PackedVector2Array(2.08165e-12, 2.08165e-12, 30, 2.08165e-12, 60, 2.08165e-12)
@@ -37,24 +55,5 @@ script = ExtResource("3_nu1ts")
 
 [node name="CollisionCircle" type="CollisionShape2D" parent="Head/HeadArea"]
 shape = SubResource("CircleShape2D_54wsa")
-debug_color = Color(0.687077, 0.0555679, 0.114304, 0.42)
-
-[node name="Body" type="Line2D" parent="."]
-points = PackedVector2Array(60, 2.08165e-12, 90, 2.08165e-12, 120, 2.08165e-12, 150, 2.08165e-12, 180, 2.08165e-12, 210, 2.08165e-12)
-width = 30.0
-default_color = Color(0, 0.6, 0, 1)
-joint_mode = 2
-begin_cap_mode = 2
-script = ExtResource("2_m2tg6")
-
-[node name="Tail" type="Line2D" parent="."]
-points = PackedVector2Array(210, 2.08165e-12, 240, 2.08165e-12)
-width = 50.0
-width_curve = SubResource("Curve_d3lmw")
-default_color = Color(0, 0.6, 0, 1)
-joint_mode = 2
-begin_cap_mode = 2
-end_cap_mode = 2
-script = ExtResource("3_2tdkq")
 
 [connection signal="body_grown" from="Body" to="Tail" method="_on_body_body_grown"]
