@@ -1,12 +1,36 @@
-[gd_scene load_steps=3 format=3 uid="uid://elt4ko4sqdjk"]
+[gd_scene load_steps=6 format=3 uid="uid://elt4ko4sqdjk"]
 
 [ext_resource type="Script" path="res://project/cherries/cherries.gd" id="1_4tsiq"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_v21nt"]
 radius = 15.0
 
+[sub_resource type="Animation" id="Animation_fm4vm"]
+length = 0.001
+
+[sub_resource type="Animation" id="Animation_8uku5"]
+resource_name = "spawn"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 0.6),
+"transitions": PackedFloat32Array(0.5, 1, 0.5),
+"update": 0,
+"values": [Vector2(2.08165e-12, 2.08165e-12), Vector2(2.5, 2.5), Vector2(2, 2)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_n2gq7"]
+_data = {
+"RESET": SubResource("Animation_fm4vm"),
+"spawn": SubResource("Animation_8uku5")
+}
+
 [node name="Cherries" type="Area2D"]
-scale = Vector2(2, 2)
+scale = Vector2(1e-05, 1e-05)
 script = ExtResource("1_4tsiq")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -35,5 +59,11 @@ points = PackedVector2Array(-3, 5, -2, 0, 0, -6, 3, -10, 4, -14)
 width = 1.0
 default_color = Color(0, 0.439216, 0, 1)
 begin_cap_mode = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_n2gq7")
+}
+autoplay = "spawn"
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
