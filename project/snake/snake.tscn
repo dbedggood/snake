@@ -20,6 +20,7 @@ metadata/_snap_enabled = true
 radius = 5.0
 
 [node name="Snake" type="Node2D"]
+z_index = 1
 script = ExtResource("1_l3j4s")
 metadata/_edit_group_ = true
 
