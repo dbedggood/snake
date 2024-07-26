@@ -4,22 +4,18 @@ signal grown
 
 @onready var snake = $".."
 @onready var head = $"../Head"
+@onready var tail = $"../Tail"
 
 
 func _process(_delta):
 	set_point_position(0, head.get_point_position(Constants.HEAD_BASE_POINT_INDEX))
-	snake.set_constrained_nodes(self)
+	snake.set_constrained_nodes(self, Constants.BODY_MAX_POINT_DISTANCE)
 
 
 func _on_snake_ate_cherries():
-	var point_count = get_point_count()
-	var last_point_index = point_count - 1
-	var snake_tail_base = get_point_position(last_point_index)
-	var snake_body_end = get_point_position(last_point_index - 1)
-	var snake_tail_direction = (snake_tail_base - snake_body_end).normalized()
+	grow_body()
 
-	add_point(
-		get_point_position(last_point_index) + snake_tail_direction * Constants.MAX_POINT_DISTANCE
-	)
 
+func grow_body():
+	add_point(tail.get_point_position(1))
 	grown.emit()

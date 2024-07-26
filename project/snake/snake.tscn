@@ -7,8 +7,8 @@
 [ext_resource type="Script" path="res://project/snake/head_area.gd" id="3_nu1ts"]
 
 [sub_resource type="Curve" id="Curve_d3lmw"]
-_data = [Vector2(0, 0.6), 0.0, 0.0, 0, 0, Vector2(1, 0.3), 0.0, 0.0, 0, 0]
-point_count = 2
+_data = [Vector2(0, 0.6), 0.0, 0.0, 0, 0, Vector2(0.2, 0.6), 0.0, 0.0, 0, 0, Vector2(1, 0.3), 0.0, 0.0, 0, 0]
+point_count = 3
 metadata/_snap_enabled = true
 
 [sub_resource type="Curve" id="Curve_xg11q"]
@@ -24,7 +24,7 @@ script = ExtResource("1_l3j4s")
 metadata/_edit_group_ = true
 
 [node name="Body" type="Line2D" parent="."]
-points = PackedVector2Array(60, 2.08165e-12, 90, 2.08165e-12, 120, 2.08165e-12, 150, 2.08165e-12, 180, 2.08165e-12, 210, 2.08165e-12)
+points = PackedVector2Array(60, 2.08165e-12, 70, 2.08165e-12, 80, 2.08165e-12, 90, 2.08165e-12, 100, 2.08165e-12, 110, 2.08165e-12, 120, 2.08165e-12, 130, 2.08165e-12, 140, 2.08165e-12, 150, 2.08165e-12, 160, 2.08165e-12, 170, 2.08165e-12, 180, 2.08165e-12, 190, 2.08165e-12, 200, 2.08165e-12, 210, 2.08165e-12)
 width = 30.0
 default_color = Color(0, 0.6, 0, 1)
 joint_mode = 2
@@ -32,7 +32,7 @@ begin_cap_mode = 2
 script = ExtResource("2_m2tg6")
 
 [node name="Tail" type="Line2D" parent="."]
-points = PackedVector2Array(210, 2.08165e-12, 240, 2.08165e-12)
+points = PackedVector2Array(210, 2.08165e-12, 220, 0, 230, 2.08165e-12, 240, 2.08165e-12, 250, 2.08165e-12, 260, 2.08165e-12, 270, 2.08165e-12, 280, 2.08165e-12)
 width = 50.0
 width_curve = SubResource("Curve_d3lmw")
 default_color = Color(0, 0.6, 0, 1)
