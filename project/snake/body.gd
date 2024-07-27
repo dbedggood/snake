@@ -1,4 +1,4 @@
-extends Line2D
+extends Snake
 
 signal grown
 
@@ -7,9 +7,13 @@ signal grown
 @onready var tail = $"../Tail"
 
 
+func _ready():
+	pass
+
+
 func _process(_delta):
 	set_point_position(0, head.get_point_position(Constants.HEAD_BASE_POINT_INDEX))
-	snake.set_constrained_nodes(self, Constants.BODY_MAX_POINT_DISTANCE)
+	snake.set_constrained_nodes(Constants.BODY_MAX_POINT_DISTANCE)
 
 
 func _on_snake_ate_cherries():
@@ -19,5 +23,6 @@ func _on_snake_ate_cherries():
 
 
 func grow_body():
-	add_point(tail.get_point_position(1))
+	var new_point_position = tail.get_point_position(1)
+	add_point(new_point_position)
 	grown.emit()

@@ -1,4 +1,4 @@
-extends Line2D
+extends Snake
 
 @onready var snake = $".."
 
@@ -6,7 +6,7 @@ extends Line2D
 func _process(_delta):
 	var head_tip_position = get_global_mouse_position()
 	set_point_position(Constants.HEAD_TIP_POINT_INDEX, head_tip_position)
-	snake.set_constrained_nodes(self, Constants.HEAD_MAX_POINT_DISTANCE)
+	snake.set_constrained_nodes(Constants.HEAD_MAX_POINT_DISTANCE)
 
 
 func _draw():

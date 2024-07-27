@@ -19,7 +19,7 @@ metadata/_snap_enabled = true
 [sub_resource type="CircleShape2D" id="CircleShape2D_54wsa"]
 radius = 5.0
 
-[node name="Snake" type="Node2D"]
+[node name="Snake" type="Line2D"]
 z_index = 1
 script = ExtResource("1_l3j4s")
 metadata/_edit_group_ = true
