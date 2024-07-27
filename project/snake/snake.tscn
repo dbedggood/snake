@@ -17,7 +17,6 @@ point_count = 3
 metadata/_snap_enabled = true
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_54wsa"]
-radius = 5.0
 
 [node name="Snake" type="Node2D"]
 z_index = 1
@@ -33,7 +32,7 @@ begin_cap_mode = 2
 script = ExtResource("2_m2tg6")
 
 [node name="Tail" type="Line2D" parent="."]
-points = PackedVector2Array(210, 2.08165e-12, 220, 0, 230, 2.08165e-12, 240, 2.08165e-12, 250, 2.08165e-12, 260, 2.08165e-12, 270, 2.08165e-12, 280, 2.08165e-12)
+points = PackedVector2Array(210, 2.08165e-12, 220, 0, 230, 2.08165e-12, 240, 2.08165e-12, 250, 2.08165e-12, 260, 2.08165e-12, 270, 0)
 width = 50.0
 width_curve = SubResource("Curve_d3lmw")
 default_color = Color(0, 0.6, 0, 1)
@@ -52,6 +51,8 @@ begin_cap_mode = 2
 script = ExtResource("1_f3ym2")
 
 [node name="HeadArea" type="Area2D" parent="Head"]
+collision_layer = 2
+collision_mask = 5
 script = ExtResource("3_nu1ts")
 
 [node name="CollisionCircle" type="CollisionShape2D" parent="Head/HeadArea"]
@@ -59,3 +60,4 @@ shape = SubResource("CircleShape2D_54wsa")
 
 [connection signal="ate_cherries" from="." to="Body" method="_on_snake_ate_cherries"]
 [connection signal="grown" from="Body" to="Tail" method="_on_body_grown"]
+[connection signal="area_entered" from="Head/HeadArea" to="Body" method="_on_head_area_area_entered"]
