@@ -31,6 +31,11 @@ joint_mode = 2
 begin_cap_mode = 2
 script = ExtResource("2_m2tg6")
 
+[node name="BodyArea" type="Area2D" parent="Body"]
+
+[node name="BodyCollisions" type="CollisionPolygon2D" parent="Body/BodyArea"]
+polygon = PackedVector2Array(57, 6, 103, 6, 165, 6, 208, 7, 207, -6, 163, -5, 101, -5, 56, -5)
+
 [node name="Tail" type="Line2D" parent="."]
 points = PackedVector2Array(210, 2.08165e-12, 220, 0, 230, 2.08165e-12, 240, 2.08165e-12, 250, 2.08165e-12, 260, 2.08165e-12, 270, 0)
 width = 50.0
@@ -60,4 +65,3 @@ shape = SubResource("CircleShape2D_54wsa")
 
 [connection signal="ate_cherries" from="." to="Body" method="_on_snake_ate_cherries"]
 [connection signal="grown" from="Body" to="Tail" method="_on_body_grown"]
-[connection signal="area_entered" from="Head/HeadArea" to="Body" method="_on_head_area_area_entered"]
