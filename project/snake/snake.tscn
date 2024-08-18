@@ -6,6 +6,11 @@
 [ext_resource type="Script" path="res://project/snake/tail.gd" id="3_2tdkq"]
 [ext_resource type="Script" path="res://project/snake/head_area.gd" id="3_nu1ts"]
 
+[sub_resource type="Curve" id="Curve_d3lmw"]
+_data = [Vector2(0, 0.6), 0.0, 0.0, 0, 0, Vector2(0.2, 0.6), 0.0, 0.0, 0, 0, Vector2(1, 0.3), 0.0, 0.0, 0, 0]
+point_count = 3
+metadata/_snap_enabled = true
+
 [sub_resource type="Curve" id="Curve_xg11q"]
 _data = [Vector2(0, 0.4), 0.0, 0.0, 0, 0, Vector2(0.3, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.6), 0.0, 0.0, 0, 0]
 point_count = 3
@@ -13,32 +18,10 @@ metadata/_snap_enabled = true
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_54wsa"]
 
-[sub_resource type="Curve" id="Curve_d3lmw"]
-_data = [Vector2(0, 0.6), 0.0, 0.0, 0, 0, Vector2(0.2, 0.6), 0.0, 0.0, 0, 0, Vector2(1, 0.3), 0.0, 0.0, 0, 0]
-point_count = 3
-metadata/_snap_enabled = true
-
 [node name="Snake" type="Node2D"]
 z_index = 1
 script = ExtResource("1_l3j4s")
 metadata/_edit_group_ = true
-
-[node name="Head" type="Line2D" parent="."]
-points = PackedVector2Array(2.08165e-12, 2.08165e-12, 30, 2.08165e-12, 60, 2.08165e-12)
-width = 50.0
-width_curve = SubResource("Curve_xg11q")
-default_color = Color(0, 0.6, 0, 1)
-joint_mode = 2
-begin_cap_mode = 2
-script = ExtResource("1_f3ym2")
-
-[node name="HeadArea" type="Area2D" parent="Head"]
-collision_layer = 2
-collision_mask = 5
-script = ExtResource("3_nu1ts")
-
-[node name="CollisionCircle" type="CollisionShape2D" parent="Head/HeadArea"]
-shape = SubResource("CircleShape2D_54wsa")
 
 [node name="Body" type="Line2D" parent="."]
 points = PackedVector2Array(60, 2.08165e-12, 70, 2.08165e-12, 80, 2.08165e-12, 90, 2.08165e-12, 100, 2.08165e-12, 110, 2.08165e-12, 120, 2.08165e-12, 130, 2.08165e-12, 140, 2.08165e-12, 150, 2.08165e-12, 160, 2.08165e-12, 170, 2.08165e-12, 180, 2.08165e-12, 190, 2.08165e-12, 200, 2.08165e-12, 210, 2.08165e-12)
@@ -58,6 +41,23 @@ begin_cap_mode = 2
 end_cap_mode = 2
 script = ExtResource("3_2tdkq")
 
+[node name="Head" type="Line2D" parent="."]
+points = PackedVector2Array(2.08165e-12, 2.08165e-12, 30, 2.08165e-12, 60, 2.08165e-12)
+width = 50.0
+width_curve = SubResource("Curve_xg11q")
+default_color = Color(0, 0.6, 0, 1)
+joint_mode = 2
+begin_cap_mode = 2
+script = ExtResource("1_f3ym2")
+
+[node name="HeadArea" type="Area2D" parent="Head"]
+collision_layer = 2
+collision_mask = 5
+script = ExtResource("3_nu1ts")
+
+[node name="CollisionCircle" type="CollisionShape2D" parent="Head/HeadArea"]
+shape = SubResource("CircleShape2D_54wsa")
+
 [connection signal="ate_cherries" from="." to="Body" method="_on_snake_ate_cherries"]
-[connection signal="area_entered" from="Head/HeadArea" to="Body" method="_on_head_area_area_entered"]
 [connection signal="grown" from="Body" to="Tail" method="_on_body_grown"]
+[connection signal="area_entered" from="Head/HeadArea" to="Body" method="_on_head_area_area_entered"]
