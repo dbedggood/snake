@@ -1,3 +1,3 @@
-# a wiggly snake 🐍
+# Procedural animation demo 🐍
 
-![A snake wiggling](./snake-in-action.gif)
+Try it out [here](https://dbedggood.github.io/snake/)
